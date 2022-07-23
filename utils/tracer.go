@@ -11,7 +11,7 @@ import (
 var Tracer = otel.GetTracerProvider().Tracer("")
 
 func StartSpan(ctx context.Context) (context.Context, trace.Span) {
-	pc, _, _, _ := runtime.Caller(1)
+	pc, _, _, _ := runtime.Caller(2)
 	details := runtime.FuncForPC(pc)
 	return Tracer.Start(ctx, details.Name())
 }

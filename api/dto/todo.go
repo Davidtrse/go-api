@@ -1,4 +1,4 @@
-package requests
+package dto
 
 type PostTodo struct {
 	Name string `json:"name" validate:"required" example:"Todo this"`

@@ -21,7 +21,7 @@ func (se StatusError) Status() int {
 }
 
 func newError(err error, code int) StatusError {
-	pc, _, line, _ := runtime.Caller(2)
+	pc, _, line, _ := runtime.Caller(1)
 	details := runtime.FuncForPC(pc)
 
 	return StatusError{

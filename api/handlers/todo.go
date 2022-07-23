@@ -1,7 +1,7 @@
 package handlers
 
 import (
-	"api/api/requests"
+	"api/api/dto"
 	"api/entities"
 	"api/interfaces"
 	"api/utils"
@@ -50,7 +50,7 @@ func (handlers *todoHandlers) postTodo(w http.ResponseWriter, r *http.Request) {
 	ctx, span := utils.StartSpan(r.Context())
 	defer span.End()
 
-	var input requests.PostTodo
+	var input dto.PostTodo
 	err := utils.ReadJson(r, &input)
 	if err != nil {
 		handlers.presenters.Error(w, r, entities.ErrorBadRequest(err))
@@ -84,7 +84,7 @@ func (handlers *todoHandlers) patchTodo(w http.ResponseWriter, r *http.Request) 
 		return
 	}
 
-	var input requests.PatchTodo
+	var input dto.PatchTodo
 	err = utils.ReadJson(r, &input)
 	if err != nil {
 		handlers.presenters.Error(w, r, entities.ErrorBadRequest(err))

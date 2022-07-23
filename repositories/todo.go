@@ -6,6 +6,7 @@ import (
 	"api/utils"
 	"context"
 	"errors"
+	"fmt"
 
 	"gorm.io/gorm"
 )
@@ -30,7 +31,7 @@ func (repository *todoRepository) FindByID(ctx context.Context, id uint) (entiti
 	result := repository.db.First(&todo, "id = ?", id)
 	if result.Error != nil {
 		if errors.Is(result.Error, gorm.ErrRecordNotFound) {
-			return todo, entities.ErrorNotFound(result.Error)
+			return todo, entities.ErrorNotFound(fmt.Errorf("FindByID %v error. %s ", id, result.Error.Error()))
 		}
 		return todo, entities.ErrorInternal(result.Error)
 	}
