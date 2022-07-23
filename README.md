@@ -6,8 +6,10 @@ You need to have Go and Docker installed on your machine.
 
 Run instructions:
 
-``` docker-compose up -d ```
+``` $ git clone git@github.com:Davidtrse/go-api.git ```
 
-``` go mod download ```
+``` $ docker-compose up -d ```
 
-``` go run main.go ```
+``` $ go mod download ```
+
+``` $ go run main.go (or f5 by vs code)```
